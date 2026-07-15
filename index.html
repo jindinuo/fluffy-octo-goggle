@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>星茄小说网 - 小说阅读网站</title>
+  <meta name="description" content="一个现代、响应式的小说阅读网站原型，包含分类、排行、详情页、阅读页和本地书架。" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav">
+      <a class="brand" href="#home" aria-label="星茄小说网首页">
+        <span class="brand-mark">茄</span>
+        <span>星茄小说网</span>
+      </a>
+      <button class="nav-toggle" type="button" aria-label="打开菜单">☰</button>
+      <div class="nav-links">
+        <a href="#home">首页</a>
+        <a href="#categories">分类</a>
+        <a href="#rankings">排行</a>
+        <a href="#bookshelf">书架</a>
+      </div>
+      <form class="search" role="search">
+        <div class="search-wrapper">
+          <input id="searchInput" type="search" placeholder="搜索书名、作者、标签" autocomplete="off" />
+          <div id="searchSuggestions" class="search-suggestions"></div>
+        </div>
+        <button type="submit">搜索</button>
+      </form>
+    </nav>
+    <!-- 顶部Tab导航栏 -->
+    <nav class="tab-nav" aria-label="二级导航">
+      <div class="tab-nav-inner">
+        <button class="tab-item active" data-tab="home">推荐</button>
+        <button class="tab-item" data-tab="categories">分类</button>
+        <button class="tab-item" data-tab="rankings">排行</button>
+        <button class="tab-item" data-tab="bookshelf">书单</button>
+        <button class="tab-item" data-tab="free">免费</button>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 推荐 Tab 内容区 -->
+    <section id="tab-home" class="tab-content active">
+      <section id="home" class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">沉浸式阅读 · 每日上新</p>
+          <h1>发现下一本让你熬夜的好故事</h1>
+          <p class="hero-text">聚合玄幻、都市、科幻、悬疑、言情等热门题材，支持本地书架、章节阅读和移动端适配。</p>
+          <div class="hero-actions">
+            <a class="primary-btn" href="#featured">开始阅读</a>
+            <a class="ghost-btn" href="#rankings">查看榜单</a>
+          </div>
+        </div>
+        <div class="hero-card" aria-label="今日推荐小说">
+          <span class="tag">今日主推</span>
+          <h2>星河拾荒者</h2>
+          <p>在被遗忘的星环废墟中，少年工程师捡到一枚会说话的古文明核心。</p>
+          <div class="hero-meta">
+            <span>科幻</span>
+            <span>连载中</span>
+            <span>128 万字</span>
+          </div>
+          <button class="read-featured" type="button" data-book-id="b1">立即阅读</button>
+        </div>
+      </section>
+
+      <!-- 轮播Banner区 -->
+      <section class="banner-section">
+        <div class="banner-container">
+          <button class="banner-arrow banner-prev" type="button" aria-label="上一张">&#8249;</button>
+          <div class="banner-track">
+            <div class="banner-slide" data-index="0">
+              <div class="banner-card" style="--banner-a:#20243f;--banner-b:#7b61ff">
+                <div class="banner-card-content">
+                  <span class="tag">编辑力荐</span>
+                  <h2>星河拾荒者</h2>
+                  <p>在被遗忘的星环废墟中，少年工程师捡到一枚会说话的古文明核心。</p>
+                  <button class="banner-read-btn" type="button" data-book-id="b1">立即阅读</button>
+                </div>
+              </div>
+            </div>
+            <div class="banner-slide" data-index="1">
+              <div class="banner-card" style="--banner-a:#3f2b20;--banner-b:#b85c38">
+                <div class="banner-card-content">
+                  <span class="tag">本周热读</span>
+                  <h2>长安夜雨录</h2>
+                  <p>大雨封城的长安夜里，金吾卫接连发现三封没有署名的血书。</p>
+                  <button class="banner-read-btn" type="button" data-book-id="b2">立即阅读</button>
+                </div>
+              </div>
+            </div>
+            <div class="banner-slide" data-index="2">
+              <div class="banner-card" style="--banner-a:#22334d;--banner-b:#38a3a5">
+                <div class="banner-card-content">
+                  <span class="tag">人气飙升</span>
+                  <h2>剑起万山</h2>
+                  <p>山村少年叶听澜天生断脉，却在万山禁地中得到一截无名剑骨。</p>
+                  <button class="banner-read-btn" type="button" data-book-id="b4">立即阅读</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="banner-arrow banner-next" type="button" aria-label="下一张">&#8250;</button>
+        </div>
+        <div class="banner-dots">
+          <button class="banner-dot active" type="button" data-dot="0" aria-label="第1张"></button>
+          <button class="banner-dot" type="button" data-dot="1" aria-label="第2张"></button>
+          <button class="banner-dot" type="button" data-dot="2" aria-label="第3张"></button>
+        </div>
+      </section>
+
+      <!-- 最近阅读区 -->
+      <section id="recentReading" class="section recent-section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Continue</p>
+            <h2>最近阅读</h2>
+          </div>
+        </div>
+        <div id="recentReadingList" class="recent-reading-list"></div>
+      </section>
+
+      <section class="ad-strip" aria-label="首页横幅广告">
+        <div class="ad-label">广告</div>
+        <div class="ad-copy">
+          <strong>广告位：首页横幅</strong>
+          <span>这里可接入 Google AdSense、百度联盟、穿山甲等广告代码。</span>
+        </div>
+        <button type="button" class="ad-cta">了解详情</button>
+      </section>
+
+      <section id="featured" class="section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Featured</p>
+            <h2>编辑精选</h2>
+          </div>
+          <p>精选高人气、高留存作品，适合放在网站首页做重点推荐。</p>
+        </div>
+        <div id="bookGrid" class="book-grid"></div>
+      </section>
+
+      <section class="section ad-section">
+        <div class="ad-card large">
+          <div class="ad-label">广告</div>
+          <h2>广告位：信息流推荐</h2>
+          <p>适合放在小说列表和分类之间，后续可替换为真实广告联盟代码。</p>
+        </div>
+        <div class="monetize-card">
+          <p class="eyebrow">Free Reading</p>
+          <h2>免费看小说，靠广告支持运营</h2>
+          <p>读者免费阅读，网站通过横幅广告、信息流广告和章节间广告获得收入。真实上线前，请确保小说内容拥有版权或授权。</p>
+        </div>
+      </section>
+
+      <!-- 猜你喜欢区 -->
+      <section id="guessYouLike" class="section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">For You</p>
+            <h2>猜你喜欢</h2>
+          </div>
+          <button id="refreshGuess" class="refresh-btn" type="button">换一换</button>
+        </div>
+        <div id="guessGrid" class="book-grid"></div>
+      </section>
+
+      <!-- 热门标签云 -->
+      <section id="tagCloud" class="section soft">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Tags</p>
+            <h2>热门标签</h2>
+          </div>
+          <p>点击标签发现同类好书。</p>
+        </div>
+        <div id="tagCloudList" class="tag-cloud"></div>
+      </section>
+    </section>
+
+    <!-- 分类 Tab 内容区 -->
+    <section id="tab-categories" class="tab-content">
+      <section id="categories" class="section soft">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Categories</p>
+            <h2>小说分类</h2>
+          </div>
+          <p>点击分类可快速筛选作品。</p>
+        </div>
+        <!-- 完结/连载筛选按钮 -->
+        <div id="statusFilter" class="status-filter">
+          <button class="status-btn active" data-status="全部" type="button">全部</button>
+          <button class="status-btn" data-status="连载中" type="button">连载中</button>
+          <button class="status-btn" data-status="已完结" type="button">已完结</button>
+        </div>
+        <div id="categoryList" class="category-list"></div>
+        <div id="categoryBookGrid" class="book-grid" style="margin-top:24px"></div>
+      </section>
+    </section>
+
+    <!-- 排行 Tab 内容区 -->
+    <section id="tab-rankings" class="tab-content">
+      <section id="rankings" class="section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Rankings</p>
+            <h2>本周热榜</h2>
+          </div>
+          <p>榜单适合后续接入点击量、收藏量或付费订阅数据。</p>
+        </div>
+        <div id="rankingList" class="ranking-list"></div>
+      </section>
+    </section>
+
+    <!-- 书单 Tab 内容区 -->
+    <section id="tab-bookshelf" class="tab-content">
+      <section id="bookshelf" class="section soft">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Bookshelf</p>
+            <h2>我的书架</h2>
+          </div>
+          <p>书架数据会保存在当前浏览器本地。</p>
+        </div>
+        <div id="bookshelfList" class="book-grid empty-grid"></div>
+      </section>
+    </section>
+
+    <!-- 免费 Tab 内容区 -->
+    <section id="tab-free" class="tab-content">
+      <section class="section">
+        <div class="section-title">
+          <div>
+            <p class="eyebrow">Free</p>
+            <h2>免费专区</h2>
+          </div>
+          <p>限时免费小说，无需付费畅读。</p>
+        </div>
+        <div id="freeBookGrid" class="book-grid"></div>
+      </section>
+    </section>
+  </main>
+
+  <aside id="detailPanel" class="panel" aria-hidden="true">
+    <div class="panel-card">
+      <button class="close-btn" type="button" aria-label="关闭详情">×</button>
+      <div id="detailContent"></div>
+    </div>
+  </aside>
+
+  <aside id="readerPanel" class="reader" aria-hidden="true">
+    <div class="reader-topbar">
+      <button id="backToDetail" type="button">返回详情</button>
+      <div class="reader-controls">
+        <button id="ttsButton" type="button" class="tts-btn">🔊 听书</button>
+        <button id="decreaseFont" type="button">A-</button>
+        <button id="increaseFont" type="button">A+</button>
+        <button id="toggleTheme" type="button">夜间</button>
+      </div>
+    </div>
+    <article class="reader-content">
+      <p id="readerBook" class="reader-book"></p>
+      <h1 id="readerTitle"></h1>
+      <div class="reader-ad top-ad">
+        <div class="ad-label">广告</div>
+        <span>章节顶部广告位</span>
+      </div>
+      <div id="readerText" class="reader-text"></div>
+      <div class="reader-ad bottom-ad">
+        <div class="ad-label">广告</div>
+        <span>章节底部广告位</span>
+      </div>
+    </article>
+  </aside>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <footer class="footer">
+    <p>&copy; 2026 星茄小说网 · 小说网站原型</p>
+    <p>可继续扩展为会员、作者后台、评论、支付和章节管理系统。</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
